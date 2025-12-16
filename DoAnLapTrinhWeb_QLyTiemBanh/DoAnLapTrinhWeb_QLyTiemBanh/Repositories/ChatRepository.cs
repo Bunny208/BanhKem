@@ -27,9 +27,10 @@ namespace DoAnLapTrinhWeb_QLyTiemBanh.Repositories
         public async Task<List<ChatMessage>> GetMessagesAsync(string userId)
         {
             const string adminId = "admin@tiembanh.local";
+            const string adminGroup = "Admins";
             return await _context.ChatMessages
                 .Where(m =>
-                    (m.SenderId == userId && m.ReceiverId == adminId) ||
+                    (m.SenderId == userId && (m.ReceiverId == adminGroup || m.ReceiverId == adminId)) ||
                     (m.SenderId == adminId && m.ReceiverId == userId))
                 .OrderBy(m => m.SentAt)
                 .ToListAsync();
