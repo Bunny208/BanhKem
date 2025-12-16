@@ -14,7 +14,8 @@ namespace DoAnLapTrinhWeb_QLyTiemBanh.Models
         [ForeignKey("UserId")]
         [ValidateNever]
         public ApplicationUser ApplicationUser { get; set; }
-       
+
+        // ✅ Tên thuộc tính nên là CartItems để EF hiểu đúng mối quan hệ
         public ICollection<CartItem>? CartItems { get; set; } = new List<CartItem>();
     }
 }

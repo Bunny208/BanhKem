@@ -13,6 +13,7 @@ namespace DoAnLapTrinhWeb_QLyTiemBanh.Models
         public int Quantity { get; set; }
         public decimal Price { get; set; }
 
+        // ✅ Bỏ [JsonIgnore], để gửi sang Flutter được
         public string? ImageUrl { get; set; }
         public string UserId { get; set; } = "";
 
@@ -20,9 +21,9 @@ namespace DoAnLapTrinhWeb_QLyTiemBanh.Models
         public Product? Product { get; set; }
         public int UserCartId { get; set; }
         
-        [JsonIgnore] 
+        [JsonIgnore] // tránh vòng lặp khi serialize
         public UserCart? UserCart { get; set; }
-        [NotMapped] 
+        [NotMapped] // Không lưu vào DB
         public string? Notes { get; set; }
 
 

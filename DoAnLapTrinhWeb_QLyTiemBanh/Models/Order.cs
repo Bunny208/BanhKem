@@ -16,7 +16,7 @@ namespace DoAnLapTrinhWeb_QLyTiemBanh.Models
         public string RecipientPhone { get; set; }
         public DateTime OrderDate { get; set; }
         [Precision(18, 2)]
-        public decimal TotalPrice { get; set; }
+        public decimal TotalPrice { get; set; } // Tổng giá trị đơn hàng
         // ----- ĐỊA CHỈ NHẬN HÀNG (lấy từ form) -----
         [Required(ErrorMessage = "Vui lòng nhập địa chỉ cụ thể.")]
         [StringLength(255)]

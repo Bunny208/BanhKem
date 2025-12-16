@@ -19,16 +19,16 @@ namespace DoAnLapTrinhWeb_QLyTiemBanh.Models
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<ChatMessage> ChatMessages { get; set; }
         public DbSet<ChatNote> ChatNotes { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+            // ✅ Thiết lập khóa chính và kiểu decimal chính xác cho Price
             modelBuilder.Entity<CartItem>(entity =>
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Price)
-                      .HasColumnType("decimal(18,2)");
+                      .HasColumnType("decimal(18,2)"); // tránh lỗi tràn số
             });
             modelBuilder.Entity<UserCart>()
         .HasMany(u => u.CartItems)
